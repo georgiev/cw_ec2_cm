@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+
+require "cw_ec2_cm"
+
+CwEc2Cm.push_metrics
+

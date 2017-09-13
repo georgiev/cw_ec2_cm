@@ -9,7 +9,7 @@ module CwEc2Cm
     Tempfile.open(WHENEVER_ID) do |f|
       f.write <<-SCHEDULE
         every 1.minute do
-          runner "CwEc2Cm.push_metrics"
+          command "cw-ec2-cm-push"
         end      
       SCHEDULE
       f.close
