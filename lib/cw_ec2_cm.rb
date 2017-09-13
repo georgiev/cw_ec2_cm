@@ -44,11 +44,11 @@ module CwEc2Cm
 
     if worst_fs = df_data.max_by{ |fs| fs['pcent'].to_f }
       metric_data << {
-        "MetricName": "FSUsagePercent",
-        "Dimensions": [{ "Name": "InstanceId", "Value": instance_id }],
-        "Timestamp": metric_time,
-        "Value": worst_fs['pcent'].to_f,
-        "Unit": "Percent" # accepts Seconds, Microseconds, Milliseconds, Bytes, Kilobytes, Megabytes, Gigabytes, Terabytes, Bits, Kilobits, Megabits, Gigabits, Terabits, Percent, Count, Bytes/Second, Kilobytes/Second, Megabytes/Second, Gigabytes/Second, Terabytes/Second, Bits/Second, Kilobits/Second, Megabits/Second, Gigabits/Second, Terabits/Second, Count/Second, None
+        "MetricName" => "FSUsagePercent",
+        "Dimensions" => [{ "Name" => "InstanceId", "Value" => instance_id }],
+        "Timestamp" => metric_time,
+        "Value" => worst_fs['pcent'].to_f,
+        "Unit" => "Percent" # accepts Seconds, Microseconds, Milliseconds, Bytes, Kilobytes, Megabytes, Gigabytes, Terabytes, Bits, Kilobits, Megabits, Gigabits, Terabits, Percent, Count, Bytes/Second, Kilobytes/Second, Megabytes/Second, Gigabytes/Second, Terabytes/Second, Bits/Second, Kilobits/Second, Megabits/Second, Gigabits/Second, Terabits/Second, Count/Second, None
       }
     end
 
@@ -65,18 +65,18 @@ module CwEc2Cm
     mem_used = mem_total - mem_free
     mem_percent = (mem_used/mem_total*100).ceil
     metric_data << {
-      "MetricName": "MemUsagePercent",
-      "Dimensions": [{ "Name": "InstanceId", "Value": instance_id }],
-      "Timestamp": metric_time,
-      "Value": mem_percent,
-      "Unit": "Percent" # accepts Seconds, Microseconds, Milliseconds, Bytes, Kilobytes, Megabytes, Gigabytes, Terabytes, Bits, Kilobits, Megabits, Gigabits, Terabits, Percent, Count, Bytes/Second, Kilobytes/Second, Megabytes/Second, Gigabytes/Second, Terabytes/Second, Bits/Second, Kilobits/Second, Megabits/Second, Gigabits/Second, Terabits/Second, Count/Second, None
+      "MetricName" => "MemUsagePercent",
+      "Dimensions" => [{ "Name" => "InstanceId", "Value" => instance_id }],
+      "Timestamp" => metric_time,
+      "Value" => mem_percent,
+      "Unit" => "Percent" # accepts Seconds, Microseconds, Milliseconds, Bytes, Kilobytes, Megabytes, Gigabytes, Terabytes, Bits, Kilobits, Megabits, Gigabits, Terabits, Percent, Count, Bytes/Second, Kilobytes/Second, Megabytes/Second, Gigabytes/Second, Terabytes/Second, Bits/Second, Kilobits/Second, Megabits/Second, Gigabits/Second, Terabits/Second, Count/Second, None
     }
     metric_data << {
-      "MetricName": "MemFree",
-      "Dimensions": [{ "Name": "InstanceId", "Value": instance_id }],
-      "Timestamp": metric_time,
-      "Value": mem_free/1024/1024,
-      "Unit": "Megabytes" # accepts Seconds, Microseconds, Milliseconds, Bytes, Kilobytes, Megabytes, Gigabytes, Terabytes, Bits, Kilobits, Megabits, Gigabits, Terabits, Percent, Count, Bytes/Second, Kilobytes/Second, Megabytes/Second, Gigabytes/Second, Terabytes/Second, Bits/Second, Kilobits/Second, Megabits/Second, Gigabits/Second, Terabits/Second, Count/Second, None
+      "MetricName" => "MemFree",
+      "Dimensions" => [{ "Name" => "InstanceId", "Value" => instance_id }],
+      "Timestamp" => metric_time,
+      "Value" => mem_free/1024/1024,
+      "Unit" => "Megabytes" # accepts Seconds, Microseconds, Milliseconds, Bytes, Kilobytes, Megabytes, Gigabytes, Terabytes, Bits, Kilobits, Megabits, Gigabits, Terabits, Percent, Count, Bytes/Second, Kilobytes/Second, Megabytes/Second, Gigabytes/Second, Terabytes/Second, Bits/Second, Kilobits/Second, Megabits/Second, Gigabits/Second, Terabits/Second, Count/Second, None
     }
 
     Tempfile.open('cw-ec2-cm-metrics') do |f|
