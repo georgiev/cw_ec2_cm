@@ -7,9 +7,10 @@ module CwEc2Cm
   WHENEVER_ID='cw-ec2-cm-schedule'
   def update_crontab(update_cmd)
     Tempfile.open(WHENEVER_ID) do |f|
+      push_cmd = `which cw-ec2-cm-push`
       f.write <<-SCHEDULE
         every 1.minute do
-          command "cw-ec2-cm-push"
+          command '#{push_cmd}'
         end      
       SCHEDULE
       f.close
