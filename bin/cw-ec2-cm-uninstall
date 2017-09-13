@@ -1,6 +1,5 @@
 #!/usr/bin/env ruby
 
-require "bundler/setup"
 require "cw_ec2_cm"
 
 CwEc2Cm.update_crontab('--clear-crontab')
