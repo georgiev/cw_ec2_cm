@@ -18,7 +18,7 @@ Gem::Specification.new do |spec|
     f.match(%r{^(test|spec|features)/})
   end
   spec.bindir        = "bin"
-  spec.executables   = %w(cw-ec2-cm-install cw-ec2-cm-uninstall)
+  spec.executables   = %w(cw-ec2-cm-push cw-ec2-cm-install cw-ec2-cm-uninstall)
   spec.require_paths = ["lib"]
 
   spec.add_dependency 'whenever', '~> 0.9.7'
